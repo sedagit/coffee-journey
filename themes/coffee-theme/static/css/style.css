@@ -733,7 +733,7 @@ section {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    padding: 0.75rem 0;
+    padding: 1.5rem 0;
     position: relative;
   }
 
@@ -749,12 +749,12 @@ section {
     left: 50%;
     transform: translateX(-50%);
     width: auto;
-    padding: 0.5rem 0;
+    padding: 0;
   }
 
   .logo h1 {
     font-size: 1.3rem;
-    margin: 0.25rem 0;
+    margin: 0;
   }
 
   .desktop-search {
