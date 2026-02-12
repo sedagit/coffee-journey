@@ -41,9 +41,11 @@
                     {{ if .Params.featured_image }}
                     <div class="cafe-image">
                         <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
+                        {{ if .Params.rating }}
                         <div class="cafe-rating">
                             <span class="stars">{{ partial "star-rating.html" .Params.rating }}</span>
                         </div>
+                        {{ end }}
                     </div>
                     {{ else }}
                     <div class="cafe-image placeholder">
@@ -55,21 +57,25 @@
                         <h3>{{ .Title }}</h3>
                         
                         <div class="cafe-meta">
-                            {{ with .Params.regions }}
-                            <span class="region">📍 {{ index . 0 }}</span>
+                            {{ if .Params.regions }}
+                            <span class="region">📍 {{ index .Params.regions 0 }}</span>
                             {{ end }}
-                            {{ with .Params.price_range }}
-                            <span class="price">{{ . }}</span>
+                            {{ if .Params.price_range }}
+                            <span class="price">{{ .Params.price_range }}</span>
                             {{ end }}
                         </div>
                         
+                        {{ if .Summary }}
                         <p class="cafe-excerpt">{{ .Summary | truncate 100 }}</p>
+                        {{ end }}
                         
+                        {{ if .Params.tags }}
                         <div class="cafe-tags">
                             {{ range first 2 .Params.tags }}
                             <span class="tag">#{{ . }}</span>
                             {{ end }}
                         </div>
+                        {{ end }}
                     </div>
                 </a>
             </article>

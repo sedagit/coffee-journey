@@ -55,18 +55,20 @@
         <div class="cafes-grid" id="cafes-grid">
             {{ range .Pages }}
             <article class="cafe-card" 
-                     data-region="{{ with .Params.regions }}{{ index . 0 }}{{ end }}"
-                     data-style="{{ .Params.styles }}"
-                     data-price="{{ .Params.price_range }}"
-                     data-rating="{{ .Params.rating }}"
+                     data-region="{{ if .Params.regions }}{{ index .Params.regions 0 }}{{ end }}"
+                     data-style="{{ if .Params.styles }}{{ .Params.styles }}{{ end }}"
+                     data-price="{{ if .Params.price_range }}{{ .Params.price_range }}{{ end }}"
+                     data-rating="{{ if .Params.rating }}{{ .Params.rating }}{{ else }}0{{ end }}"
                      data-date="{{ .Date.Format "2006-01-02" }}">
                 <a href="{{ .Permalink }}">
                     {{ if .Params.featured_image }}
                     <div class="cafe-image">
                         <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
+                        {{ if .Params.rating }}
                         <div class="cafe-rating">
                             <span class="stars">{{ partial "star-rating.html" .Params.rating }}</span>
                         </div>
+                        {{ end }}
                     </div>
                     {{ else }}
                     <div class="cafe-image placeholder">
@@ -78,21 +80,25 @@
                         <h3>{{ .Title }}</h3>
                         
                         <div class="cafe-meta">
-                            {{ with .Params.regions }}
-                            <span class="region">📍 {{ index . 0 }}</span>
+                            {{ if .Params.regions }}
+                            <span class="region">📍 {{ index .Params.regions 0 }}</span>
                             {{ end }}
-                            {{ with .Params.price_range }}
-                            <span class="price">{{ . }}</span>
+                            {{ if .Params.price_range }}
+                            <span class="price">{{ .Params.price_range }}</span>
                             {{ end }}
                         </div>
                         
+                        {{ if .Summary }}
                         <p class="cafe-excerpt">{{ .Summary | truncate 100 }}</p>
+                        {{ end }}
                         
+                        {{ if .Params.tags }}
                         <div class="cafe-tags">
                             {{ range first 3 .Params.tags }}
                             <span class="tag">#{{ . }}</span>
                             {{ end }}
                         </div>
+                        {{ end }}
                         
                         <div class="cafe-date">
                             {{ .Date.Format "2006年01月02日" }}
