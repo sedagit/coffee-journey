@@ -52,6 +52,4 @@ Coffee Journey began with a love for coffee and curiosity about exploring cities
 - 店家資訊(營業時間、價格等)可能隨時變動,建議造訪前先確認
 - 我們不對第三方網站內容負責
 
----
-
 感謝你的閱讀,願你的每一杯咖啡都充滿美好 ☕✨
