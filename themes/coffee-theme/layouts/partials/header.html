@@ -13,6 +13,13 @@
                 </a>
             </div>
 
+            <div class="search-box desktop-search">
+                <input type="text" id="search-input" placeholder="搜尋咖啡店...">
+                <div id="search-results"></div>
+            </div>
+
+            <div class="nav-overlay"></div>
+
             <nav class="main-nav">
                 <ul class="menu">
                     {{ range .Site.Menus.main }}
@@ -23,12 +30,12 @@
                     </li>
                     {{ end }}
                 </ul>
-            </nav>
 
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="搜尋咖啡店...">
-                <div id="search-results"></div>
-            </div>
+                <div class="search-box mobile-search">
+                    <input type="text" id="search-input-mobile" placeholder="搜尋咖啡店...">
+                    <div id="search-results-mobile"></div>
+                </div>
+            </nav>
         </div>
     </div>
 </header>

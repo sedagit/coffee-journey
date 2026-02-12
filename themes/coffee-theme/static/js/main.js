@@ -1,15 +1,33 @@
 // ==================== //
-// Mobile Menu Toggle
+// Mobile Menu Toggle & Overlay
 // ==================== //
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.menu-toggle');
   const mainNav = document.querySelector('.main-nav');
-  
+  const navOverlay = document.querySelector('.nav-overlay');
+
   if (menuToggle) {
     menuToggle.addEventListener('click', function() {
       mainNav.classList.toggle('active');
+      navOverlay.classList.toggle('active');
     });
   }
+
+  if (navOverlay) {
+    navOverlay.addEventListener('click', function() {
+      mainNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+    });
+  }
+
+  // Close menu when clicking on a menu link
+  const menuLinks = document.querySelectorAll('.main-nav a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      mainNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+    });
+  });
 });
 
 // ==================== //
@@ -25,46 +43,52 @@ fetch('/index.json')
   })
   .catch(error => console.log('Search index not available'));
 
-const searchInput = document.getElementById('search-input');
-const searchResults = document.getElementById('search-results');
+function initializeSearch(inputSelector, resultsSelector) {
+  const searchInput = document.getElementById(inputSelector);
+  const searchResults = document.getElementById(resultsSelector);
 
-if (searchInput) {
-  searchInput.addEventListener('input', function(e) {
-    const query = e.target.value.toLowerCase();
-    
-    if (query.length < 2) {
-      searchResults.innerHTML = '';
-      searchResults.style.display = 'none';
-      return;
-    }
-    
-    const results = searchIndex.filter(item => 
-      item.title.toLowerCase().includes(query) ||
-      item.content.toLowerCase().includes(query) ||
-      (item.tags && item.tags.some(tag => tag.toLowerCase().includes(query)))
-    ).slice(0, 5);
-    
-    if (results.length > 0) {
-      searchResults.innerHTML = results.map(item => `
-        <a href="${item.permalink}" class="search-result-item">
-          <strong>${item.title}</strong>
-          <p>${item.content.substring(0, 100)}...</p>
-        </a>
-      `).join('');
-      searchResults.style.display = 'block';
-    } else {
-      searchResults.innerHTML = '<div class="no-search-results">找不到相關結果</div>';
-      searchResults.style.display = 'block';
-    }
-  });
-  
-  // Close search results when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-      searchResults.style.display = 'none';
-    }
-  });
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+
+      if (query.length < 2) {
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'none';
+        return;
+      }
+
+      const results = searchIndex.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query) ||
+        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(query)))
+      ).slice(0, 5);
+
+      if (results.length > 0) {
+        searchResults.innerHTML = results.map(item => `
+          <a href="${item.permalink}" class="search-result-item">
+            <strong>${item.title}</strong>
+            <p>${item.content.substring(0, 100)}...</p>
+          </a>
+        `).join('');
+        searchResults.style.display = 'block';
+      } else {
+        searchResults.innerHTML = '<div class="no-search-results">找不到相關結果</div>';
+        searchResults.style.display = 'block';
+      }
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
+  }
 }
+
+// Initialize both search boxes
+initializeSearch('search-input', 'search-results');
+initializeSearch('search-input-mobile', 'search-results-mobile');
 
 // ==================== //
 // Map Initialization
