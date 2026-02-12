@@ -749,10 +749,12 @@ section {
     left: 50%;
     transform: translateX(-50%);
     width: auto;
+    padding: 0.5rem 0;
   }
 
   .logo h1 {
     font-size: 1.3rem;
+    margin: 0.25rem 0;
   }
 
   .desktop-search {
@@ -762,11 +764,22 @@ section {
   .mobile-search {
     display: block;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
   }
 
   #search-input-mobile {
     width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: var(--transition);
+    font-family: var(--font-sans);
+  }
+
+  #search-input-mobile:focus {
+    outline: none;
+    border-color: var(--primary-color);
   }
 
   .nav-overlay {
