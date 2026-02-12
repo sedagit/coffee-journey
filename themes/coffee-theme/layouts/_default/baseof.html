@@ -8,7 +8,7 @@
     {{- /* SEO Meta Tags */ -}}
     <title>{{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta name="keywords" content="{{ delimit .Params.tags ", " }}{{ if .Site.Params.keywords }}, {{ delimit .Site.Params.keywords ", " }}{{ end }}">
+    <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}{{ if and .Params.tags .Site.Params.keywords }}, {{ end }}{{ with .Site.Params.keywords }}{{ delimit . ", " }}{{ end }}">
     <meta name="author" content="{{ .Site.Params.author }}">
     
     {{- /* Open Graph */ -}}
@@ -55,6 +55,27 @@
       gtag('js', new Date());
       gtag('config', '{{ .Site.Params.googleAnalytics }}');
     </script>
+    {{ else if .Site.Data.seo.google_analytics }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Data.seo.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ .Site.Data.seo.google_analytics }}');
+    </script>
+    {{ end }}
+    
+    {{- /* SEO Verification Meta Tags */ -}}
+    {{ with .Site.Data.seo.ahrefs_verification }}
+    <meta name="ahrefs-site-verification" content="{{ . }}">
+    {{ end }}
+    
+    {{ with .Site.Data.seo.gsc_verification }}
+    <meta name="google-site-verification" content="{{ . }}">
+    {{ end }}
+    
+    {{ with .Site.Data.seo.bing_verification }}
+    <meta name="msvalidate.01" content="{{ . }}">
     {{ end }}
 </head>
 <body>
