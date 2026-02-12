@@ -64,11 +64,6 @@
                     {{ if .Params.featured_image }}
                     <div class="cafe-image">
                         <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
-                        {{ if .Params.rating }}
-                        <div class="cafe-rating">
-                            <span class="stars">{{ partial "star-rating.html" .Params.rating }}</span>
-                        </div>
-                        {{ end }}
                     </div>
                     {{ else }}
                     <div class="cafe-image placeholder">

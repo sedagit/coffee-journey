@@ -30,17 +30,10 @@
                     <h1>{{ .Title }}</h1>
                     
                     <div class="cafe-info-bar">
-                        {{ with .Params.rating }}
-                        <div class="rating">
-                            <span class="stars">{{ partial "star-rating.html" . }}</span>
-                            <span class="rating-number">{{ . }}</span>
-                        </div>
-                        {{ end }}
-                        
                         {{ with .Params.price_range }}
                         <span class="price-range">{{ . }}</span>
                         {{ end }}
-                        
+
                         <span class="visit-date">📅 {{ .Date.Format "2006-01-02" }}</span>
                     </div>
                     
@@ -167,9 +160,6 @@
                             <div class="cafe-meta">
                                 {{ with .Params.regions }}
                                 <span class="region">📍 {{ index . 0 }}</span>
-                                {{ end }}
-                                {{ with .Params.rating }}
-                                <span class="rating">{{ partial "star-rating.html" . }}</span>
                                 {{ end }}
                             </div>
                         </div>

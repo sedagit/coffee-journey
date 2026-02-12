@@ -17,7 +17,8 @@ enableEmoji = true
   description = "探索城市中的咖啡店,記錄每一杯咖啡的故事"
   author = "Coffee Explorer"
   keywords = ["咖啡", "咖啡廳", "手沖咖啡", "精品咖啡", "台灣咖啡"]
-  
+  favicon = "/images/favicon.ico"
+
   # 社群媒體
   instagram = "your_instagram"
   

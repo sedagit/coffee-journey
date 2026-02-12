@@ -95,6 +95,12 @@ h3 { font-size: 1.5rem; }
   gap: 2rem;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .logo h1 {
   font-size: 1.5rem;
   margin: 0;
@@ -197,7 +203,7 @@ h3 { font-size: 1.5rem; }
 .btn-primary,
 .btn-secondary {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
   border-radius: 30px;
   font-weight: 600;
   transition: var(--transition);
@@ -700,42 +706,77 @@ section {
 @media (max-width: 768px) {
   .header-content {
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
-  
+
+  .header-right {
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .desktop-search {
+    display: none;
+  }
+
+  .mobile-search {
+    display: block;
+    width: 100%;
+  }
+
+  #search-input-mobile {
+    width: 100%;
+  }
+
   .menu-toggle {
     display: flex;
   }
-  
+
+  .main-nav {
+    width: 100%;
+  }
+
   .main-nav ul {
     display: none;
     flex-direction: column;
     width: 100%;
+    margin-top: 1rem;
   }
-  
+
   .main-nav.active ul {
     display: flex;
   }
-  
+
+  .main-nav ul li {
+    width: 100%;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 0.75rem 0;
+  }
+
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .cafes-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .cafe-layout {
     grid-template-columns: 1fr;
   }
-  
+
   .filter-bar {
     flex-direction: column;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
   }
