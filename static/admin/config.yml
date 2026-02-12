@@ -81,3 +81,15 @@ collections:
         fields:
           - {label: "標題", name: "title", widget: "string"}
           - {label: "內容", name: "body", widget: "markdown"}
+  
+  - name: "settings"
+    label: "網站設定"
+    files:
+      - label: "SEO 與分析設定"
+        name: "seo"
+        file: "data/seo.yml"
+        fields:
+          - {label: "Google Analytics ID", name: "google_analytics", widget: "string", required: false, hint: "例如: G-XXXXXXXXXX"}
+          - {label: "Ahrefs 驗證碼", name: "ahrefs_verification", widget: "string", required: false, hint: "從 Ahrefs Webmaster Tools 取得"}
+          - {label: "Google Search Console 驗證碼", name: "gsc_verification", widget: "string", required: false}
+          - {label: "Bing 驗證碼", name: "bing_verification", widget: "string", required: false}

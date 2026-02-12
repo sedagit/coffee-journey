@@ -155,6 +155,15 @@ title = "你的網站名稱"
 - ✅ 語義化 HTML
 - ✅ 麵包屑導航
 
+### 🔧 SEO 工具整合
+支援透過 CMS 後台輕鬆設定:
+- ✅ Ahrefs Webmaster Tools 驗證
+- ✅ Google Analytics 4 追蹤
+- ✅ Google Search Console 驗證
+- ✅ Bing Webmaster Tools 驗證
+
+詳細設定教學請看: [SEO-INTEGRATION.md](SEO-INTEGRATION.md)
+
 ## 🔒 安全性優勢
 
 - 靜態網站,無資料庫

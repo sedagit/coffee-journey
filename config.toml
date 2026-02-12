@@ -1,4 +1,4 @@
-baseURL = "https://your-coffee-journey.netlify.app/"
+baseURL = "/"
 languageCode = "zh-TW"
 title = "咖啡旅程 - Coffee Journey"
 theme = "coffee-theme"
