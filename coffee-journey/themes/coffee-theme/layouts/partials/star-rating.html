@@ -1,0 +1,9 @@
+{{- $rating := . -}}
+{{- $fullStars := int $rating -}}
+{{- $hasHalfStar := ne (mod $rating 1) 0 -}}
+{{- $emptyStars := sub 5 $fullStars -}}
+{{- if $hasHalfStar }}{{ $emptyStars = sub $emptyStars 1 }}{{ end -}}
+
+{{- range seq $fullStars }}★{{ end -}}
+{{- if $hasHalfStar }}⯨{{ end -}}
+{{- range seq $emptyStars }}☆{{ end -}}

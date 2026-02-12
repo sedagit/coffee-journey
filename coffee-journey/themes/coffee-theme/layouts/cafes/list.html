@@ -1,0 +1,113 @@
+{{ define "main" }}
+
+<section class="cafes-list-page">
+    <div class="container">
+        <header class="page-header">
+            <h1>所有咖啡店</h1>
+            <p>探索 {{ len .Pages }} 家精心造訪的咖啡店</p>
+        </header>
+        
+        {{- /* Filter Bar */ -}}
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label>地區:</label>
+                <select id="region-filter">
+                    <option value="">全部地區</option>
+                    {{ range .Site.Taxonomies.regions }}
+                    <option value="{{ .Page.Title }}">{{ .Page.Title }} ({{ .Count }})</option>
+                    {{ end }}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>風格:</label>
+                <select id="style-filter">
+                    <option value="">全部風格</option>
+                    {{ range .Site.Taxonomies.styles }}
+                    <option value="{{ .Page.Title }}">{{ .Page.Title }} ({{ .Count }})</option>
+                    {{ end }}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>價格:</label>
+                <select id="price-filter">
+                    <option value="">全部價格</option>
+                    <option value="$">$ 經濟實惠</option>
+                    <option value="$$">$$ 中等價位</option>
+                    <option value="$$$">$$$ 稍高價位</option>
+                    <option value="$$$$">$$$$ 高價位</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>排序:</label>
+                <select id="sort-filter">
+                    <option value="date-desc">最新造訪</option>
+                    <option value="date-asc">最早造訪</option>
+                    <option value="rating-desc">評分高到低</option>
+                    <option value="rating-asc">評分低到高</option>
+                </select>
+            </div>
+        </div>
+        
+        {{- /* Cafes Grid */ -}}
+        <div class="cafes-grid" id="cafes-grid">
+            {{ range .Pages }}
+            <article class="cafe-card" 
+                     data-region="{{ with .Params.regions }}{{ index . 0 }}{{ end }}"
+                     data-style="{{ .Params.styles }}"
+                     data-price="{{ .Params.price_range }}"
+                     data-rating="{{ .Params.rating }}"
+                     data-date="{{ .Date.Format "2006-01-02" }}">
+                <a href="{{ .Permalink }}">
+                    {{ if .Params.featured_image }}
+                    <div class="cafe-image">
+                        <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
+                        <div class="cafe-rating">
+                            <span class="stars">{{ partial "star-rating.html" .Params.rating }}</span>
+                        </div>
+                    </div>
+                    {{ else }}
+                    <div class="cafe-image placeholder">
+                        <span>☕</span>
+                    </div>
+                    {{ end }}
+                    
+                    <div class="cafe-content">
+                        <h3>{{ .Title }}</h3>
+                        
+                        <div class="cafe-meta">
+                            {{ with .Params.regions }}
+                            <span class="region">📍 {{ index . 0 }}</span>
+                            {{ end }}
+                            {{ with .Params.price_range }}
+                            <span class="price">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        
+                        <p class="cafe-excerpt">{{ .Summary | truncate 100 }}</p>
+                        
+                        <div class="cafe-tags">
+                            {{ range first 3 .Params.tags }}
+                            <span class="tag">#{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        
+                        <div class="cafe-date">
+                            {{ .Date.Format "2006年01月02日" }}
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {{ end }}
+        </div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <p>😢 找不到符合條件的咖啡店</p>
+            <button onclick="resetFilters()" class="btn-secondary">重置篩選</button>
+        </div>
+    </div>
+</section>
+
+{{ end }}

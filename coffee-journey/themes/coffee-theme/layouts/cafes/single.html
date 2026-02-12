@@ -1,0 +1,206 @@
+{{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+
+<article class="cafe-single">
+    {{- /* Breadcrumb */ -}}
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="/">首頁</a> / 
+            <a href="/cafes/">咖啡店</a> / 
+            {{ with .Params.regions }}
+            <a href="/regions/{{ index . 0 | urlize }}/">{{ index . 0 }}</a> / 
+            {{ end }}
+            <span>{{ .Title }}</span>
+        </div>
+    </nav>
+    
+    {{- /* Hero Image */ -}}
+    {{ if .Params.featured_image }}
+    <div class="cafe-hero">
+        <img src="{{ .Params.featured_image }}" alt="{{ .Title }}">
+    </div>
+    {{ end }}
+    
+    <div class="container">
+        <div class="cafe-layout">
+            {{- /* Main Content */ -}}
+            <div class="cafe-main">
+                <header class="cafe-header">
+                    <h1>{{ .Title }}</h1>
+                    
+                    <div class="cafe-info-bar">
+                        {{ with .Params.rating }}
+                        <div class="rating">
+                            <span class="stars">{{ partial "star-rating.html" . }}</span>
+                            <span class="rating-number">{{ . }}</span>
+                        </div>
+                        {{ end }}
+                        
+                        {{ with .Params.price_range }}
+                        <span class="price-range">{{ . }}</span>
+                        {{ end }}
+                        
+                        <span class="visit-date">📅 {{ .Date.Format "2006-01-02" }}</span>
+                    </div>
+                    
+                    <div class="cafe-tags-bar">
+                        {{ with .Params.regions }}
+                        {{ range . }}
+                        <a href="/regions/{{ . | urlize }}/" class="tag region-tag">📍 {{ . }}</a>
+                        {{ end }}
+                        {{ end }}
+                        
+                        {{ with .Params.styles }}
+                        <span class="tag style-tag">☕ {{ . }}</span>
+                        {{ end }}
+                        
+                        {{ with .Params.tags }}
+                        {{ range . }}
+                        <a href="/tags/{{ . | urlize }}/" class="tag">#{{ . }}</a>
+                        {{ end }}
+                        {{ end }}
+                    </div>
+                </header>
+                
+                {{- /* Gallery */ -}}
+                {{ if .Params.gallery }}
+                <div class="cafe-gallery">
+                    <div class="gallery-grid">
+                        {{ range .Params.gallery }}
+                        <div class="gallery-item">
+                            <img src="{{ .image }}" alt="Gallery image" loading="lazy">
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+                
+                {{- /* Content */ -}}
+                <div class="cafe-content">
+                    {{ .Content }}
+                </div>
+                
+                {{- /* Share Buttons */ -}}
+                <div class="share-buttons">
+                    <h4>分享這家咖啡店</h4>
+                    <div class="share-links">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" rel="noopener" class="share-btn facebook">
+                            Facebook
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}" target="_blank" rel="noopener" class="share-btn twitter">
+                            Twitter
+                        </a>
+                        <a href="https://social-plugins.line.me/lineit/share?url={{ .Permalink }}" target="_blank" rel="noopener" class="share-btn line">
+                            LINE
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            {{- /* Sidebar */ -}}
+            <aside class="cafe-sidebar">
+                {{- /* Location Info */ -}}
+                <div class="info-card">
+                    <h3>店家資訊</h3>
+                    
+                    {{ with .Params.address }}
+                    <div class="info-item">
+                        <strong>📍 地址</strong>
+                        <p>{{ . }}</p>
+                    </div>
+                    {{ end }}
+                    
+                    {{ with .Params.phone }}
+                    <div class="info-item">
+                        <strong>📞 電話</strong>
+                        <p><a href="tel:{{ . }}">{{ . }}</a></p>
+                    </div>
+                    {{ end }}
+                    
+                    {{ with .Params.hours }}
+                    <div class="info-item">
+                        <strong>🕐 營業時間</strong>
+                        <p>{{ . }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+                
+                {{- /* Map */ -}}
+                {{ if and .Params.coordinates .Params.coordinates.lat .Params.coordinates.lng }}
+                <div class="info-card">
+                    <h3>地圖位置</h3>
+                    <div id="cafe-map" style="height: 250px; border-radius: 8px;" 
+                         data-lat="{{ .Params.coordinates.lat }}" 
+                         data-lng="{{ .Params.coordinates.lng }}"
+                         data-title="{{ .Title }}"></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ .Params.coordinates.lat }},{{ .Params.coordinates.lng }}" 
+                       target="_blank" rel="noopener" class="btn-map">
+                        在 Google Maps 開啟
+                    </a>
+                </div>
+                {{ end }}
+            </aside>
+        </div>
+        
+        {{- /* Related Cafes */ -}}
+        {{ $related := .Site.RegularPages.Related . | first 3 }}
+        {{ with $related }}
+        <section class="related-cafes">
+            <h2>相關推薦</h2>
+            <div class="cafes-grid">
+                {{ range . }}
+                <article class="cafe-card">
+                    <a href="{{ .Permalink }}">
+                        {{ if .Params.featured_image }}
+                        <div class="cafe-image">
+                            <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
+                        </div>
+                        {{ else }}
+                        <div class="cafe-image placeholder">
+                            <span>☕</span>
+                        </div>
+                        {{ end }}
+                        
+                        <div class="cafe-content">
+                            <h3>{{ .Title }}</h3>
+                            <div class="cafe-meta">
+                                {{ with .Params.regions }}
+                                <span class="region">📍 {{ index . 0 }}</span>
+                                {{ end }}
+                                {{ with .Params.rating }}
+                                <span class="rating">{{ partial "star-rating.html" . }}</span>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+</article>
+
+{{- /* Schema.org Structured Data */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "{{ .Title }}",
+  "image": "{{ if .Params.featured_image }}{{ .Params.featured_image | absURL }}{{ end }}",
+  {{ with .Params.address }}"address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ . }}"
+  },{{ end }}
+  {{ with .Params.phone }}"telephone": "{{ . }}",{{ end }}
+  {{ with .Params.rating }}"aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ . }}",
+    "bestRating": "5"
+  },{{ end }}
+  "priceRange": "{{ .Params.price_range }}"
+}
+</script>
+
+{{ end }}

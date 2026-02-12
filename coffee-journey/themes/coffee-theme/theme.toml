@@ -1,0 +1,12 @@
+name = "Coffee Theme"
+license = "MIT"
+licenselink = "https://github.com/your-username/coffee-theme/blob/main/LICENSE"
+description = "A beautiful theme for coffee shop journeys"
+homepage = "https://github.com/your-username/coffee-theme"
+tags = ["blog", "coffee", "responsive", "gallery"]
+features = ["responsive", "gallery", "maps", "seo"]
+min_version = "0.100.0"
+
+[author]
+  name = "Coffee Explorer"
+  homepage = "https://your-coffee-journey.com"

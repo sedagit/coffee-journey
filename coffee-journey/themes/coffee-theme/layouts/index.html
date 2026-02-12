@@ -1,0 +1,109 @@
+{{ define "main" }}
+
+{{- /* Hero Section */ -}}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">{{ .Site.Params.hero.title }}</h1>
+        <p class="hero-subtitle">{{ .Site.Params.hero.subtitle }}</p>
+        <a href="#latest-cafes" class="btn-primary">開始探索</a>
+    </div>
+</section>
+
+{{- /* Stats Section */ -}}
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">{{ len (where .Site.RegularPages "Type" "cafes") }}</div>
+                <div class="stat-label">家咖啡店</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ len .Site.Taxonomies.regions }}</div>
+                <div class="stat-label">個城市</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ len .Site.Taxonomies.tags }}</div>
+                <div class="stat-label">種風格</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{- /* Latest Cafes */ -}}
+<section id="latest-cafes" class="latest-cafes">
+    <div class="container">
+        <h2 class="section-title">最新探訪</h2>
+        
+        <div class="cafes-grid">
+            {{ range first 6 (where .Site.RegularPages "Type" "cafes") }}
+            <article class="cafe-card">
+                <a href="{{ .Permalink }}">
+                    {{ if .Params.featured_image }}
+                    <div class="cafe-image">
+                        <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" loading="lazy">
+                        <div class="cafe-rating">
+                            <span class="stars">{{ partial "star-rating.html" .Params.rating }}</span>
+                        </div>
+                    </div>
+                    {{ else }}
+                    <div class="cafe-image placeholder">
+                        <span>☕</span>
+                    </div>
+                    {{ end }}
+                    
+                    <div class="cafe-content">
+                        <h3>{{ .Title }}</h3>
+                        
+                        <div class="cafe-meta">
+                            {{ with .Params.regions }}
+                            <span class="region">📍 {{ index . 0 }}</span>
+                            {{ end }}
+                            {{ with .Params.price_range }}
+                            <span class="price">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        
+                        <p class="cafe-excerpt">{{ .Summary | truncate 100 }}</p>
+                        
+                        <div class="cafe-tags">
+                            {{ range first 2 .Params.tags }}
+                            <span class="tag">#{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {{ end }}
+        </div>
+        
+        <div class="text-center">
+            <a href="/cafes/" class="btn-secondary">查看所有咖啡店</a>
+        </div>
+    </div>
+</section>
+
+{{- /* Map Section */ -}}
+<section class="map-section">
+    <div class="container">
+        <h2 class="section-title">咖啡店地圖</h2>
+        <div id="cafes-map" style="height: 500px; border-radius: 10px;"></div>
+    </div>
+</section>
+
+{{- /* Regions */ -}}
+<section class="regions">
+    <div class="container">
+        <h2 class="section-title">探索地區</h2>
+        
+        <div class="regions-grid">
+            {{ range .Site.Taxonomies.regions }}
+            <a href="{{ .Page.Permalink }}" class="region-card">
+                <h3>{{ .Page.Title }}</h3>
+                <span class="count">{{ .Count }} 家咖啡店</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

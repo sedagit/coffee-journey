@@ -1,0 +1,76 @@
+baseURL = "https://your-coffee-journey.netlify.app/"
+languageCode = "zh-TW"
+title = "咖啡旅程 - Coffee Journey"
+theme = "coffee-theme"
+
+# SEO 優化設置
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+
+# 圖片處理
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"
+
+[params]
+  description = "探索城市中的咖啡店,記錄每一杯咖啡的故事"
+  author = "Coffee Explorer"
+  keywords = ["咖啡", "咖啡廳", "手沖咖啡", "精品咖啡", "台灣咖啡"]
+  
+  # 社群媒體
+  instagram = "your_instagram"
+  
+  # Google Analytics (選填)
+  # googleAnalytics = "G-XXXXXXXXXX"
+  
+  # 首頁設定
+  [params.hero]
+    title = "探索城市中的咖啡角落"
+    subtitle = "記錄每一間咖啡店,每一杯咖啡的故事"
+
+# 選單設定
+[[menu.main]]
+  name = "首頁"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "咖啡店地圖"
+  url = "/cafes/"
+  weight = 2
+
+[[menu.main]]
+  name = "依地區"
+  url = "/regions/"
+  weight = 3
+
+[[menu.main]]
+  name = "關於"
+  url = "/about/"
+  weight = 4
+
+# 分類法設定
+[taxonomies]
+  region = "regions"
+  tag = "tags"
+  style = "styles"
+
+# 輸出格式
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+
+# Sitemap 設定
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+# Markdown 渲染設定
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "monokai"
+    lineNos = true
