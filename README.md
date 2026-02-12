@@ -1,4 +1,4 @@
-# Coffee Journey ☕
+# 始祖鳥喝咖啡 ☕
 
 一個使用 Hugo + Netlify CMS 建立的咖啡店紀錄網站,具備視覺化編輯器、SEO 優化和高安全性。
 

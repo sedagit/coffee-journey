@@ -1,12 +1,12 @@
 ---
-title: "About Coffee Journey"
+title: "關於始祖鳥喝咖啡"
 ---
 
-# About Coffee Journey ☕
+# 始祖鳥喝咖啡 ☕
 
-## Our Story
+## 我們的故事
 
-Coffee Journey began with a love for coffee and curiosity about exploring cities. Each coffee shop has its own story, and each cup of coffee carries unique flavor memories.
+「始祖鳥喝咖啡」開始於對咖啡的熱愛和對城市探索的好奇心。每一間咖啡店都有自己的故事，每一杯咖啡都承載著獨特的風味記憶。
 
 這個網站記錄了我們走訪各地咖啡店的真實體驗 - 從隱身巷弄的手沖專門店,到熱鬧街區的複合式咖啡廳,從精品咖啡的細膩層次,到大眾咖啡的溫暖日常。
 
