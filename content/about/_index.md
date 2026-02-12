@@ -10,46 +10,46 @@ Coffee Journey began with a love for coffee and curiosity about exploring cities
 
 這個網站記錄了我們走訪各地咖啡店的真實體驗 - 從隱身巷弄的手沖專門店,到熱鬧街區的複合式咖啡廳,從精品咖啡的細膩層次,到大眾咖啡的溫暖日常。
 
-## 我們的理念
+## Our Philosophy
 
-### 真實評價
-所有文章都基於親身造訪體驗,不接受業配或置入。我們分享真實的感受,包括優點和可以改進的地方。
+### Honest Reviews
+All articles are based on personal visits. We don't accept sponsorships or product placements. We share genuine experiences, including both strengths and areas for improvement.
 
-### 全面視角
-除了咖啡本身,我們也關注:
-- 環境氛圍
-- 服務態度  
-- 價格合理性
-- 適合的情境
-- 交通停車資訊
+### Comprehensive Perspective
+Beyond the coffee itself, we also focus on:
+- Atmosphere
+- Service quality
+- Price-value ratio
+- Best occasions to visit
+- Transportation and parking
 
-### 尊重多元
-每個人對咖啡的喜好不同,我們尊重各種風格的咖啡店。精品咖啡有其價值,平價咖啡也有其溫度。
+### Respect for Diversity
+Every person has different coffee preferences. We respect all coffee shop styles. Specialty coffee has its value, and affordable coffee has its warmth.
 
-## 評分標準
+## Rating Standards
 
-我們的評分考量以下因素:
+Our ratings consider the following factors:
 
-⭐⭐⭐⭐⭐ (5.0) - 各方面都表現優異,值得特別推薦  
-⭐⭐⭐⭐⯨ (4.5) - 很棒的咖啡店,有明顯特色  
-⭐⭐⭐⭐ (4.0) - 好喝好玩,值得造訪  
-⭐⭐⭐⯨ (3.5) - 中規中矩,可以試試  
-⭐⭐⭐ (3.0) - 普通,有改善空間  
+⭐⭐⭐⭐⭐ (5.0) - Excellent in all aspects, highly recommended
+⭐⭐⭐⭐⯨ (4.5) - Great coffee shop with distinct features
+⭐⭐⭐⭐ (4.0) - Delicious and fun, worth visiting
+⭐⭐⭐⯨ (3.5) - Average, worth trying
+⭐⭐⭐ (3.0) - Ordinary, room for improvement
 
-評分是主觀的,我們建議你參考完整文章內容,而不只是數字。
+Ratings are subjective. We recommend reading the full article rather than just looking at the numbers.
 
-## 聯絡我們
+## Contact Us
 
-如果你有想推薦的咖啡店、想分享你的咖啡體驗,或是有任何建議,歡迎透過以下方式聯繫:
+If you have coffee shop recommendations, want to share your coffee experiences, or have any suggestions, feel free to reach out:
 
 - 📷 Instagram: [@your_instagram](https://instagram.com/your_instagram)
 - 📧 Email: hello@coffee-journey.com
-- 🔔 RSS訂閱: [訂閱最新文章](/index.xml)
+- 🔔 RSS Feed: [Subscribe to latest articles](/index.xml)
 
-## 免責聲明
+## Disclaimer
 
-- 所有評價為個人主觀感受,僅供參考
-- 店家資訊(營業時間、價格等)可能隨時變動,建議造訪前先確認
-- 我們不對第三方網站內容負責
+- All reviews are personal subjective opinions, for reference only
+- Shop information (hours, prices, etc.) may change anytime. Please confirm before visiting
+- We are not responsible for third-party website content
 
-感謝你的閱讀,願你的每一杯咖啡都充滿美好 ☕✨
+Thank you for reading. May every cup of coffee bring you joy ☕✨
