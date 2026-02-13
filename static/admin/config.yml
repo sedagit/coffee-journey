@@ -5,6 +5,9 @@ backend:
 # 本地測試時使用
 local_backend: true
 
+# 編輯工作流設定
+publish_mode: editorial_workflow
+
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
